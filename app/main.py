@@ -1,3 +1,4 @@
+from __future__ import annotations
 class Distance:
     def __init__(self, km: int) -> None:
         self.km = km
@@ -8,7 +9,7 @@ class Distance:
     def __repr__(self) -> str:
         return f"Distance(km={self.km})"
 
-    def __add__(self, other: int) -> int:
+    def __add__(self, other: int) -> Distance:
         if isinstance(other, Distance):
             return Distance(self.km + other.km)
         return Distance(self.km + other)
@@ -20,33 +21,33 @@ class Distance:
         self.km += other
         return self
 
-    def __mul__(self, number: int) -> int:
+    def __mul__(self, number: int) -> Distance:
         return Distance(self.km * number)
 
-    def __truediv__(self, number: int) -> float:
+    def __truediv__(self, number: int) -> Distance:
         return Distance(round((self.km / number), 2))
 
-    def __lt__(self, other: int) -> int:
+    def __lt__(self, other: int) -> bool:
         if isinstance(other, Distance):
             return self.km < other.km
         return self.km < other
 
-    def __gt__(self, other: int) -> int:
+    def __gt__(self, other: int) -> bool:
         if isinstance(other, Distance):
             return self.km > other.km
         return self.km > other
 
-    def __eq__(self, other: int) -> int:
+    def __eq__(self, other: int) -> bool:
         if isinstance(other, Distance):
             return self.km == other.km
         return self.km == other
 
-    def __le__(self, other: int) -> int:
+    def __le__(self, other: int) -> bool:
         if isinstance(other, Distance):
             return self.km <= other.km
         return self.km <= other
 
-    def __ge__(self, other: int) -> int:
+    def __ge__(self, other: int) -> bool:
         if isinstance(other, Distance):
             return self.km >= other.km
         return self.km >= other
